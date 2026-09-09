@@ -1,13 +1,13 @@
 # PingX - Instant & Secure Messaging
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Bhargavikintali/pingx)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/nikkusingh21/pingx)
 
 PingX is a modern, ultra-responsive messaging web application and Android app featuring unique 8-digit PingX ID peer-to-peer authentication, instant connection requests, real-time simulated chatting, voice messaging, and integrated Google Meet video calling.
 
 ## 🚀 Live Demo & Access
 
 - **Web App (Opens on Any Device - iOS, Android, macOS, Windows)**:  
-  [https://bhargavikintali.github.io/pingx/](https://bhargavikintali.github.io/pingx/)
+  [https://nikkusingh21.github.io/pingx/](https://nikkusingh21.github.io/pingx/)
 
 - **Direct Native Android APK Download (Permanent)**:  
   [Download PingX.apk (v1.0)](https://files.catbox.moe/ltd4rm.apk)
