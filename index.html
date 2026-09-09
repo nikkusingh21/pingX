@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>PingX - Instant & Secure Messaging</title>
+  <meta name="description" content="PingX - Ultra-fast peer-to-peer messaging application with unique PingX ID authentication.">
+  <meta name="theme-color" content="#4A00E0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/png" href="pingx_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Desktop Top Utilities Bar (Shown on wider screens) -->
+  <header class="desktop-banner" id="desktopBanner">
+    <div class="banner-brand">
+      <img src="pingx_logo.png" alt="PingX" class="banner-logo">
+      <div>
+        <div class="banner-title">PingX Web Experience</div>
+        <div class="banner-subtitle">Live on any device: iOS, Android, macOS & Windows</div>
+      </div>
+    </div>
+    <div class="banner-actions">
+      <button class="btn-banner btn-view-toggle" id="btnToggleView" title="Toggle full width / phone frame">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        <span>Toggle Phone Frame</span>
+      </button>
+      <button class="btn-banner btn-share" id="btnShareModal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        <span>Share / QR</span>
+      </button>
+      <a href="https://files.catbox.moe/ltd4rm.apk" download="PingX.apk" class="btn-banner btn-download-apk" id="downloadApkBtn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download APK</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- App Container (Phone Frame on Desktop, Full Screen on Mobile) -->
+  <main class="app-viewport frame-mode" id="appViewport">
+    
+    <!-- Virtual Phone Status Bar (Visible in Frame mode) -->
+    <div class="phone-notch">
+      <div class="notch-speaker"></div>
+      <div class="notch-camera"></div>
+    </div>
+
+    <!-- Screen 1: Splash Screen -->
+    <section class="screen active" id="screenSplash">
+      <div class="splash-content">
+        <div class="logo-wrapper pulse-glow">
+          <img src="pingx_logo.png" alt="PingX Logo" class="splash-logo" id="splashLogo">
+        </div>
+        <h1 class="splash-title">PingX</h1>
+        <p class="splash-tagline">Seamless • Secure • Direct</p>
+        <div class="splash-loader">
+          <div class="loader-bar"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 2: Register Screen -->
+    <section class="screen" id="screenRegister">
+      <div class="auth-header">
+        <div class="brand-badge">
+          <img src="pingx_logo.png" alt="PingX" class="mini-logo">
+          <span>PingX</span>
+        </div>
+        <h2 class="auth-title">Create Account</h2>
+        <p class="auth-desc">Join PingX and get your unique 8-digit ID</p>
+      </div>
+
+      <div class="auth-card">
+        <form id="registerForm" autocomplete="off">
+          <div class="form-group">
+            <label for="regUsername">Username</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <input type="text" id="regUsername" placeholder="e.g. alex_rivera" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="regEmail">Email Address</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <input type="email" id="regEmail" placeholder="name@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <input type="password" id="regPassword" placeholder="Minimum 6 characters" required>
+              <button type="button" class="btn-toggle-eye" data-target="regPassword" title="Toggle password visibility">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="regConfirmPassword">Confirm Password</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <input type="password" id="regConfirmPassword" placeholder="Re-enter password" required>
+              <button type="button" class="btn-toggle-eye" data-target="regConfirmPassword" title="Toggle password visibility">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-gradient-primary btn-submit-auth" id="btnRegisterSubmit">
+            <span>Generate PingX ID & Register</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          <span>Already have an account?</span>
+          <button type="button" class="auth-switch-link" id="linkGoLogin">Login</button>
+        </div>
+        <div style="text-align: center; margin-top: 12px;">
+          <a href="https://files.catbox.moe/ltd4rm.apk" download="PingX.apk" style="font-size: 12px; color: var(--primary); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+            <span>📥 Download Android APK</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 3: OTP Screen -->
+    <section class="screen" id="screenOtp">
+      <div class="auth-header">
+        <button type="button" class="btn-header-back" id="btnBackToRegister">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <h2 class="auth-title">Verify OTP</h2>
+        <p class="auth-desc">Enter the 4-digit code generated for your PingX ID</p>
+      </div>
+
+      <div class="auth-card text-center">
+        <div class="otp-badge" id="otpPingxIdBadge">ID: 87429103</div>
+        <div class="otp-instruction">We have generated your instant activation code:</div>
+        
+        <!-- Live hint for user testing -->
+        <div class="otp-auto-hint" id="otpAutoHint">
+          <span class="hint-label">Generated OTP:</span>
+          <span class="hint-code" id="hintCodeDisplay">----</span>
+          <button type="button" class="btn-copy-code" id="btnAutoFillOtp">Auto-Fill</button>
+        </div>
+
+        <div class="otp-inputs-row" id="otpInputsRow">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box" autofocus>
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box">
+          <input type="text" maxlength="1" inputmode="numeric" class="otp-box">
+        </div>
+
+        <button type="button" class="btn-gradient-primary btn-submit-auth" id="btnVerifyOtp">
+          <span>Verify & Continue</span>
+        </button>
+
+        <div class="auth-footer">
+          <button type="button" class="auth-switch-link" id="btnResendOtp">Resend Code</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 4: Login Screen -->
+    <section class="screen" id="screenLogin">
+      <div class="auth-header">
+        <div class="brand-badge">
+          <img src="pingx_logo.png" alt="PingX" class="mini-logo">
+          <span>PingX</span>
+        </div>
+        <h2 class="auth-title">Welcome Back</h2>
+        <p class="auth-desc">Sign in with your 8-digit PingX ID</p>
+      </div>
+
+      <div class="auth-card">
+        <form id="loginForm" autocomplete="off">
+          <div class="form-group">
+            <label for="loginIdInput">PingX ID (8 Digits)</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="13" y2="16"/></svg>
+              <input type="text" id="loginIdInput" maxlength="8" inputmode="numeric" placeholder="e.g. 58392014" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPasswordInput">Password</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <input type="password" id="loginPasswordInput" placeholder="Enter your password" required>
+              <button type="button" class="btn-toggle-eye" data-target="loginPasswordInput" title="Toggle password visibility">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-gradient-primary btn-submit-auth" id="btnLoginSubmit">
+            <span>Login to PingX</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          <span>Need a new ID?</span>
+          <button type="button" class="auth-switch-link" id="linkGoRegister">Create Account</button>
+        </div>
+        <div style="text-align: center; margin-top: 12px;">
+          <a href="https://files.catbox.moe/ltd4rm.apk" download="PingX.apk" style="font-size: 12px; color: var(--primary); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+            <span>📥 Download Android APK</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 5: Home Screen -->
+    <section class="screen" id="screenHome">
+      <!-- App Header -->
+      <div class="home-top-bar">
+        <div class="brand-info">
+          <div class="app-logo-title">
+            <img src="pingx_logo.png" alt="PingX" class="topbar-logo">
+            <span class="topbar-text">PingX</span>
+          </div>
+          <div class="user-pill" id="userPillBadge" title="Click to view profile">
+            <span class="online-indicator"></span>
+            <span id="currentPingxIdDisplay">ID: 84920194</span>
+          </div>
+        </div>
+
+        <div class="topbar-controls">
+          <button class="topbar-btn" id="btnThemeToggle" title="Toggle Dark/Light">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </button>
+          <button class="topbar-btn" id="btnLogout" title="Log out">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Home Content Body -->
+      <div class="home-scroll-area">
+        <!-- Section: Friend / Connection Requests -->
+        <div class="section-container">
+          <div class="section-header">
+            <h3 class="section-title">Connection Requests</h3>
+            <span class="badge-count" id="requestsCountBadge">3 pending</span>
+          </div>
+
+          <div class="requests-horizontal-scroll" id="requestsListContainer">
+            <!-- User 1: Rakesh -->
+            <div class="request-card" data-id="1" data-name="Rakesh" data-reason="Project discussion" data-avatar="👨‍💻">
+              <div class="avatar-wrapper avatar-rakesh">
+                <span class="avatar-emoji">👨‍💻</span>
+                <span class="pulse-ring"></span>
+              </div>
+              <div class="request-info">
+                <div class="request-name">Rakesh</div>
+                <div class="request-sub">Tap to review</div>
+              </div>
+            </div>
+
+            <!-- User 2: Ram -->
+            <div class="request-card" data-id="2" data-name="Ram" data-reason="Notes sharing" data-avatar="📚">
+              <div class="avatar-wrapper avatar-ram">
+                <span class="avatar-emoji">📚</span>
+                <span class="pulse-ring"></span>
+              </div>
+              <div class="request-info">
+                <div class="request-name">Ram</div>
+                <div class="request-sub">Tap to review</div>
+              </div>
+            </div>
+
+            <!-- User 3: Rocky -->
+            <div class="request-card" data-id="3" data-name="Rocky" data-reason="Doubt clarification" data-avatar="⚡">
+              <div class="avatar-wrapper avatar-rocky">
+                <span class="avatar-emoji">⚡</span>
+                <span class="pulse-ring"></span>
+              </div>
+              <div class="request-info">
+                <div class="request-name">Rocky</div>
+                <div class="request-sub">Tap to review</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Active Chats -->
+        <div class="section-container chats-section">
+          <div class="section-header">
+            <h3 class="section-title">Messages</h3>
+            <div class="search-mini-box">
+              <input type="text" id="chatSearchInput" placeholder="Filter conversations...">
+            </div>
+          </div>
+
+          <div class="chats-vertical-list" id="chatsContainer">
+            <!-- Default Pre-populated Chats -->
+            <div class="chat-list-item" data-name="Alex Carter" data-status="Online" data-avatar="🚀">
+              <div class="chat-avatar-box">
+                <span class="avatar-emoji">🚀</span>
+                <span class="status-dot online"></span>
+              </div>
+              <div class="chat-details">
+                <div class="chat-header-row">
+                  <div class="chat-user-name">Alex Carter</div>
+                  <div class="chat-timestamp">10:42 AM</div>
+                </div>
+                <div class="chat-sub-row">
+                  <div class="chat-last-message">Hey, did you check the new APK update?</div>
+                  <span class="unread-pill">2</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-list-item" data-name="Sarah Lin" data-status="Active 5m ago" data-avatar="✨">
+              <div class="chat-avatar-box">
+                <span class="avatar-emoji">✨</span>
+                <span class="status-dot idle"></span>
+              </div>
+              <div class="chat-details">
+                <div class="chat-header-row">
+                  <div class="chat-user-name">Sarah Lin</div>
+                  <div class="chat-timestamp">Yesterday</div>
+                </div>
+                <div class="chat-sub-row">
+                  <div class="chat-last-message">Awesome! Let's connect over video call soon.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-list-item" data-name="Dev Team" data-status="Online" data-avatar="💻">
+              <div class="chat-avatar-box">
+                <span class="avatar-emoji">💻</span>
+                <span class="status-dot online"></span>
+              </div>
+              <div class="chat-details">
+                <div class="chat-header-row">
+                  <div class="chat-user-name">Dev Team Group</div>
+                  <div class="chat-timestamp">Aug 20</div>
+                </div>
+                <div class="chat-sub-row">
+                  <div class="chat-last-message">Server syncing is configured.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Action Button: Add / Send Request -->
+      <button class="fab-add-request" id="btnFabAdd" title="Send Connection Request">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+    </section>
+
+    <!-- Screen 6: Chat Activity Screen -->
+    <section class="screen" id="screenChat">
+      <!-- Chat Header -->
+      <div class="chat-top-bar">
+        <button class="btn-chat-back" id="btnChatBack">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <div class="chat-active-profile">
+          <div class="chat-header-avatar" id="chatHeaderAvatar">👨‍💻</div>
+          <div class="chat-header-meta">
+            <div class="chat-header-name" id="chatHeaderName">Rakesh</div>
+            <div class="chat-header-status" id="chatHeaderStatus">Online</div>
+          </div>
+        </div>
+
+        <div class="chat-header-actions">
+          <button class="chat-action-btn" id="btnVideoCall" title="Open Google Meet Call">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat Messages Scroll View -->
+      <div class="chat-messages-container" id="chatMessagesContainer">
+        <!-- System Date Pill -->
+        <div class="chat-date-pill">Today</div>
+
+        <!-- Sample Conversation -->
+        <div class="message-bubble received">
+          <div class="bubble-text">Hi! Thanks for connecting on PingX.</div>
+          <div class="bubble-meta">10:44 AM</div>
+        </div>
+
+        <div class="message-bubble sent">
+          <div class="bubble-text">Hey! Glad to connect. How is your project going?</div>
+          <div class="bubble-meta">10:45 AM <span class="read-ticks">✓✓</span></div>
+        </div>
+      </div>
+
+      <!-- Live Voice Recording Banner (Shown when recording) -->
+      <div class="voice-recording-banner" id="voiceRecordingBanner">
+        <div class="rec-dot-pulse"></div>
+        <span class="rec-text">Recording Audio...</span>
+        <div class="rec-waveform">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <span class="rec-timer" id="recTimer">0:00</span>
+        <button type="button" class="btn-cancel-rec" id="btnCancelRec">Cancel</button>
+      </div>
+
+      <!-- Chat Input Bottom Bar -->
+      <div class="chat-input-bar">
+        <input type="file" id="fileAttachInput" style="display:none;" accept="image/*,.pdf,.doc,.docx,.zip">
+        <button type="button" class="btn-chat-tool" id="btnAttach" title="Attach file or photo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+        </button>
+
+        <div class="chat-input-field-wrap">
+          <textarea id="chatInputMessage" placeholder="Type a message..." rows="1"></textarea>
+        </div>
+
+        <button type="button" class="btn-chat-tool" id="btnMic" title="Voice note">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </button>
+
+        <button type="button" class="btn-chat-send" id="btnSendMessage" title="Send message">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- Modal 1: Registration Success Alert -->
+    <div class="modal-backdrop" id="modalRegSuccess">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-icon-header success">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#4A00E0" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3 class="modal-title">Registration Successful!</h3>
+        <p class="modal-subtitle">Save your credentials to sign in anytime:</p>
+        
+        <div class="credentials-box">
+          <div class="cred-row">
+            <span class="cred-label">PingX ID:</span>
+            <span class="cred-value" id="generatedPingxId">87429103</span>
+            <button class="btn-copy-sm" data-copy="generatedPingxId" title="Copy ID">📋</button>
+          </div>
+          <div class="cred-row">
+            <span class="cred-label">OTP Code:</span>
+            <span class="cred-value" id="generatedOtp">4920</span>
+            <button class="btn-copy-sm" data-copy="generatedOtp" title="Copy OTP">📋</button>
+          </div>
+        </div>
+
+        <button type="button" class="btn-gradient-primary btn-modal-action" id="btnModalContinueToOtp">
+          Proceed to Verification
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal 2: Accept / Reject Request Dialog -->
+    <div class="modal-backdrop" id="modalAcceptRequest">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-avatar-header" id="modalReqAvatar">👨‍💻</div>
+        <h3 class="modal-title" id="modalReqName">Rakesh</h3>
+        <div class="modal-reason-pill" id="modalReqReason">Reason: Project discussion</div>
+        <p class="modal-subtitle">Would you like to accept this conversation request?</p>
+
+        <div class="modal-dual-actions">
+          <button type="button" class="btn-action-reject" id="btnModalReject">
+            <span>Decline</span>
+          </button>
+          <button type="button" class="btn-action-accept" id="btnModalAccept">
+            <span>Accept & Chat</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Send Connection Request Dialog -->
+    <div class="modal-backdrop" id="modalSendRequest">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-icon-header primary">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A00E0" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        </div>
+        <h3 class="modal-title">New Connection</h3>
+        <p class="modal-subtitle">Connect directly using their 8-digit PingX ID</p>
+
+        <form id="formSendRequest">
+          <div class="form-group text-left">
+            <label for="inputReqId">Recipient's PingX ID</label>
+            <input type="text" id="inputReqId" maxlength="8" inputmode="numeric" placeholder="e.g. 91028475" required class="dialog-input">
+          </div>
+
+          <div class="form-group text-left">
+            <label for="inputReqReason">Purpose / Reason</label>
+            <input type="text" id="inputReqReason" placeholder="e.g. Discuss study notes" required class="dialog-input">
+          </div>
+
+          <div class="modal-dual-actions">
+            <button type="button" class="btn-action-cancel" id="btnModalCancelRequest">Cancel</button>
+            <button type="submit" class="btn-action-accept" id="btnModalSend">Send Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 4: Share & QR Code Modal -->
+    <div class="modal-backdrop" id="modalShare">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-icon-header accent">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00BCD4" stroke-width="2.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        </div>
+        <h3 class="modal-title">Open on Any Device</h3>
+        <p class="modal-subtitle">Scan with your iPhone, Android, or tablet camera to open instantly:</p>
+
+        <div class="qr-code-wrapper" id="qrCodeContainer">
+          <img id="qrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fapril-prefix-how-assume.trycloudflare.com&bgcolor=ffffff&color=4A00E0" alt="QR Code" class="qr-image">
+        </div>
+
+        <div class="share-url-box">
+          <input type="text" id="shareUrlInput" readonly value="https://april-prefix-how-assume.trycloudflare.com">
+          <button type="button" class="btn-copy-url" id="btnCopyShareUrl">Copy Link</button>
+        </div>
+
+        <button type="button" class="btn-gradient-primary btn-modal-action" id="btnCloseShareModal">
+          Done
+        </button>
+      </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div class="toast-container" id="toastContainer"></div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
