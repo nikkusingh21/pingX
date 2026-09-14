@@ -386,6 +386,29 @@
           <button class="chat-action-btn" id="btnVideoCall" title="Open Google Meet Call">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
           </button>
+          <button class="chat-action-btn" id="btnChatMenu" title="Conversation Options">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+          </button>
+          <!-- Chat Options Dropdown -->
+          <div class="chat-menu-dropdown" id="chatMenuDropdown">
+            <button type="button" class="chat-menu-item" id="btnMenuContactInfo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>User Details</span>
+            </button>
+            <button type="button" class="chat-menu-item" id="btnMenuClearChat">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+              <span>Clear Messages</span>
+            </button>
+            <div class="chat-menu-divider"></div>
+            <button type="button" class="chat-menu-item text-warning" id="btnMenuReportUser">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Report User</span>
+            </button>
+            <button type="button" class="chat-menu-item text-danger" id="btnMenuBlockUser">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+              <span>Block User</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -437,6 +460,995 @@
         </button>
       </div>
     </section>
+
+    <!-- Screen 7: Security Dashboard -->
+    <section class="screen" id="screenSecurity">
+      <div class="subview-header">
+        <button type="button" class="btn-subview-back" data-back-to="screenHome" title="Back to Chats">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="subview-title-wrap">
+          <h2 class="subview-title">Security Dashboard</h2>
+          <span class="subview-sub">Account & Session Protection</span>
+        </div>
+        <div class="subview-header-badge">
+          <span class="security-status-indicator pulse-green" title="Systems Secure"></span>
+        </div>
+      </div>
+
+      <div class="subview-scroll-area">
+        <!-- Security Overview Health Card -->
+        <div class="security-hero-card">
+          <div class="hero-status-top">
+            <div class="status-shield-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+            </div>
+            <div>
+              <div class="hero-status-title">Security Status: Protected <span class="badge-verified">✓</span></div>
+              <div class="hero-status-sub">All essential defense systems active</div>
+            </div>
+          </div>
+          <div class="security-score-bar-wrap">
+            <div class="score-label-row">
+              <span>Account Protection Score</span>
+              <span class="score-percent" id="secScoreVal">92%</span>
+            </div>
+            <div class="score-track">
+              <div class="score-fill" style="width: 92%;"></div>
+            </div>
+          </div>
+          <div class="security-checklist">
+            <div class="check-item"><span class="check-icon">✓</span> 8-Digit ID Peer Auth Active</div>
+            <div class="check-item"><span class="check-icon">✓</span> Session Tokens Enforced</div>
+            <div class="check-item"><span class="check-icon">✓</span> Transport Encryption (TLS 1.3)</div>
+            <div class="check-item"><span class="check-icon">✓</span> Zero Suspicious Attempts</div>
+          </div>
+        </div>
+
+        <!-- Section: Authentication -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Authentication</div>
+              <div class="card-desc">PingX ID & Password Credentials</div>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-meta">
+              <span class="info-label">Current PingX ID</span>
+              <span class="info-val monospace" id="secPingxIdDisplay">84920194</span>
+            </div>
+            <button type="button" class="btn-ghost-sm" id="btnCopySecId">Copy ID</button>
+          </div>
+
+          <div class="info-row">
+            <div class="info-meta">
+              <span class="info-label">Password</span>
+              <span class="info-val">•••••••••••• (Updated recently)</span>
+            </div>
+            <button type="button" class="btn-ghost-sm" id="btnOpenChangePassword">Update</button>
+          </div>
+
+          <div class="info-row">
+            <div class="info-meta">
+              <span class="info-label">Last Successful Login</span>
+              <span class="info-val" id="secLastLoginText">Today, 10:42 AM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Two-Factor Authentication -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge accent">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Two-Factor Authentication (2FA)</div>
+              <div class="card-desc">TOTP code protection for sign-in</div>
+            </div>
+          </div>
+
+          <div class="banner-notice info">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span>Authenticator app verification adds an extra security barrier to your 8-digit ID.</span>
+          </div>
+
+          <div class="info-row">
+            <div class="info-meta">
+              <span class="info-label">2FA Verification Status</span>
+              <span class="info-val" id="sec2faStatusText">Not Configured</span>
+            </div>
+            <button type="button" class="btn-gradient-sm" id="btnSetup2fa">Configure 2FA</button>
+          </div>
+          <div class="backend-integration-tag">
+            <span>⚙️ Backend Hook: /api/auth/2fa/verify (Simulated for client preview)</span>
+          </div>
+        </div>
+
+        <!-- Section: Active Sessions -->
+        <div class="settings-section-card">
+          <div class="section-card-header flex-between">
+            <div class="card-header-left">
+              <div class="card-icon-badge success">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div>
+                <div class="card-title">Active Sessions & Devices</div>
+                <div class="card-desc">Currently signed in clients</div>
+              </div>
+            </div>
+            <span class="badge-count" id="activeSessionsCount">3 active</span>
+          </div>
+
+          <div class="sessions-list" id="sessionsListContainer">
+            <!-- Current Session -->
+            <div class="session-item current-session">
+              <div class="session-icon">💻</div>
+              <div class="session-info">
+                <div class="session-title-row">
+                  <span class="session-name" id="currentDeviceName">Web Browser (Current Device)</span>
+                  <span class="session-tag current">This Device</span>
+                </div>
+                <div class="session-meta">Active Now • IP: 192.168.1.104 • Local Session</div>
+              </div>
+            </div>
+
+            <!-- Other Session 1 -->
+            <div class="session-item other-session" data-session-id="sess-android">
+              <div class="session-icon">📱</div>
+              <div class="session-info">
+                <div class="session-title-row">
+                  <span class="session-name">PingX Native Android Companion</span>
+                  <span class="session-tag mobile">Mobile App</span>
+                </div>
+                <div class="session-meta">Active 2 hrs ago • Android 14 (APK Build)</div>
+              </div>
+            </div>
+
+            <!-- Other Session 2 -->
+            <div class="session-item other-session" data-session-id="sess-tablet">
+              <div class="session-icon">📱</div>
+              <div class="session-info">
+                <div class="session-title-row">
+                  <span class="session-name">Safari Mobile Tablet</span>
+                  <span class="session-tag">iOS</span>
+                </div>
+                <div class="session-meta">Active Yesterday • IP: 172.56.21.90</div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn-danger-outline" id="btnLogoutAllDevices">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span>Log Out From All Other Devices</span>
+          </button>
+        </div>
+
+        <!-- Section: Security Alerts & Preferences -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge warning">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Security Alerts</div>
+              <div class="card-desc">Real-time alerts for critical events</div>
+            </div>
+          </div>
+
+          <div class="toggle-setting-row">
+            <div class="toggle-meta">
+              <span class="toggle-title">New Device Sign-in Alerts</span>
+              <span class="toggle-sub">Notify when your PingX ID logs in on a new device</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleAlertNewDevice" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="toggle-setting-row">
+            <div class="toggle-meta">
+              <span class="toggle-title">Suspicious Login Detection</span>
+              <span class="toggle-sub">Flag rapid failed attempts or abnormal locations</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleAlertSuspicious" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="toggle-setting-row">
+            <div class="toggle-meta">
+              <span class="toggle-title">Password Change Confirmations</span>
+              <span class="toggle-sub">Instant alerts upon credential adjustments</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleAlertPassword" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Section: Login Activity Timeline -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Recent Login Activity</div>
+              <div class="card-desc">Chronological access timeline</div>
+            </div>
+          </div>
+
+          <div class="timeline-container">
+            <div class="timeline-entry">
+              <div class="timeline-marker success"></div>
+              <div class="timeline-content">
+                <div class="timeline-title">Web Session Started • Successful</div>
+                <div class="timeline-meta" id="timelineCurrentLoginMeta">Today, 10:42 AM • Chrome / Web Client</div>
+              </div>
+            </div>
+            <div class="timeline-entry">
+              <div class="timeline-marker success"></div>
+              <div class="timeline-content">
+                <div class="timeline-title">Android Companion APK • Successful</div>
+                <div class="timeline-meta">Yesterday, 8:15 PM • Android 14 • APK v1.0</div>
+              </div>
+            </div>
+            <div class="timeline-entry">
+              <div class="timeline-marker neutral"></div>
+              <div class="timeline-content">
+                <div class="timeline-title">OTP Generated & Verified</div>
+                <div class="timeline-meta">Sep 11, 2026, 3:10 PM • ID Activation Flow</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 8: Privacy Center -->
+    <section class="screen" id="screenPrivacy">
+      <div class="subview-header">
+        <button type="button" class="btn-subview-back" data-back-to="screenHome" title="Back to Chats">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="subview-title-wrap">
+          <h2 class="subview-title">Privacy Center</h2>
+          <span class="subview-sub">Your Data, Your Sovereign Control</span>
+        </div>
+        <div class="subview-header-badge">
+          <span class="privacy-lock-icon">🔒</span>
+        </div>
+      </div>
+
+      <div class="subview-scroll-area">
+        <!-- Privacy Hero Pledge -->
+        <div class="privacy-pledge-card">
+          <div class="pledge-quote-mark">“</div>
+          <h3 class="pledge-heading">Your privacy matters.</h3>
+          <p class="pledge-body">
+            PingX is designed from the ground up to give users control over their conversations and personal information. We do not sell user data, run advertising trackers, or harvest device contacts.
+          </p>
+          <div class="pledge-tags">
+            <span class="pledge-tag">✓ No Ad Trackers</span>
+            <span class="pledge-tag">✓ No Contact Harvesting</span>
+            <span class="pledge-tag">✓ Localized Chat Cache</span>
+          </div>
+        </div>
+
+        <!-- Privacy Transparency Cards -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge success">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div>
+              <div class="card-title">What PingX Collects</div>
+              <div class="card-desc">Strictly limited essential data</div>
+            </div>
+          </div>
+          <ul class="privacy-bullet-list">
+            <li><strong>8-Digit PingX ID:</strong> A pseudonym identifier generated to avoid requiring your real phone number.</li>
+            <li><strong>Account Sign-in Credentials:</strong> Encrypted in transit to authenticate sessions.</li>
+            <li><strong>Connection Requests:</strong> Recipient ID and stated purpose/reason while pending approval.</li>
+            <li><strong>Active Session Cache:</strong> Browser/device user-agent string for authorized session auditing.</li>
+          </ul>
+        </div>
+
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge accent">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <div>
+              <div class="card-title">What PingX Does NOT Collect</div>
+              <div class="card-desc">Zero telemetry, zero harvesting</div>
+            </div>
+          </div>
+          <ul class="privacy-bullet-list danger-bullets">
+            <li><strong>NO GPS / Geolocation Tracking:</strong> We never log or request your GPS position.</li>
+            <li><strong>NO Phone Address Book Scraping:</strong> Your contacts remain private on your device.</li>
+            <li><strong>NO Third-Party Ad Pixels or Trackers:</strong> No Meta, Google Ads, or data broker scripts.</li>
+            <li><strong>NO Background Audio Recording:</strong> Microphone is only accessed when you hold the voice note button.</li>
+          </ul>
+        </div>
+
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Encryption & Message Handling</div>
+              <div class="card-desc">Honest & transparent technical disclosure</div>
+            </div>
+          </div>
+          <div class="encryption-disclosure-box">
+            <div class="disclosure-badge">TLS 1.3 / HTTPS Active</div>
+            <p class="disclosure-text">
+              All communications between your browser/app and PingX services are protected by industry-standard <strong>Transport Layer Security (TLS 1.3)</strong> encryption in transit.
+            </p>
+            <div class="disclosure-note">
+              <strong>Roadmap Transparency:</strong> Full cryptographic end-to-end encryption (E2EE) with client-side double-ratchet key exchanges is scheduled for the upcoming multi-peer backend release. We never make misleading claims about zero-knowledge encryption before complete backend verification.
+            </div>
+          </div>
+        </div>
+
+        <!-- Privacy Preferences -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge warning">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Privacy Preferences</div>
+              <div class="card-desc">Control what peers can see</div>
+            </div>
+          </div>
+
+          <div class="toggle-setting-row">
+            <div class="toggle-meta">
+              <span class="toggle-title">Online & Active Status</span>
+              <span class="toggle-sub">Allow peers to see your active online dot</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleOnlineStatus" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="toggle-setting-row">
+            <div class="toggle-meta">
+              <span class="toggle-title">Read Receipts (Double Checkmarks)</span>
+              <span class="toggle-sub">Show ✓✓ when messages have been opened</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleReadReceipts" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="toggle-setting-row">
+            <div class="toggle-meta">
+              <span class="toggle-title">Require Reason For Connection Requests</span>
+              <span class="toggle-sub">Require senders to enter a purpose before connecting</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleRequireReason" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="toggle-setting-row">
+            <div class="toggle-meta">
+              <span class="toggle-title">Notification Content Previews</span>
+              <span class="toggle-sub">Hide sender and message snippet on lockscreen</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleHideNotificationPreview">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- User Data Controls: Export, Clear, Delete -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge danger">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+            <div>
+              <div class="card-title">User Data Sovereignty</div>
+              <div class="card-desc">Download or delete your stored data</div>
+            </div>
+          </div>
+
+          <div class="action-item-card">
+            <div class="action-item-info">
+              <div class="action-item-title">Download Personal Data</div>
+              <div class="action-item-sub">Export your profile, chats, sessions, and request history as a formatted JSON archive.</div>
+            </div>
+            <button type="button" class="btn-gradient-sm" id="btnExportData">
+              <span>Export Data (.json)</span>
+            </button>
+          </div>
+
+          <div class="action-item-card">
+            <div class="action-item-info">
+              <div class="action-item-title">Clear Chat History & Cache</div>
+              <div class="action-item-sub">Erase all local message bubbles, attached files, and voice notes from this browser.</div>
+            </div>
+            <button type="button" class="btn-danger-sm" id="btnClearLocalData">
+              <span>Clear History</span>
+            </button>
+          </div>
+
+          <div class="action-item-card danger-zone-card">
+            <div class="action-item-info">
+              <div class="action-item-title text-danger">Delete PingX Account</div>
+              <div class="action-item-sub">Permanently revoke your 8-digit ID and wipe all account credentials.</div>
+            </div>
+            <button type="button" class="btn-danger-fill-sm" id="btnDeleteAccountPrompt">
+              <span>Delete Account</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 9: Settings Hub -->
+    <section class="screen" id="screenSettings">
+      <div class="subview-header">
+        <button type="button" class="btn-subview-back" data-back-to="screenHome" title="Back to Chats">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="subview-title-wrap">
+          <h2 class="subview-title">Settings</h2>
+          <span class="subview-sub">Preferences & Account Management</span>
+        </div>
+        <div class="subview-header-badge">
+          <button type="button" class="btn-topbar-logout" id="btnSettingsLogout" title="Logout">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="subview-scroll-area">
+        <!-- User Profile Card -->
+        <div class="profile-preview-card" id="profileSummaryCard">
+          <div class="profile-avatar-large" id="profileAvatarDisplay">👨‍💻</div>
+          <div class="profile-main-meta">
+            <div class="profile-display-name" id="profileNameDisplay">Alex Rivera</div>
+            <div class="profile-id-badge">
+              <span id="profileIdDisplay">ID: 84920194</span>
+              <button type="button" class="btn-copy-chip" data-copy="profileIdDisplay" title="Copy ID">📋</button>
+            </div>
+            <div class="profile-email-sub" id="profileEmailDisplay">alex_rivera@example.com</div>
+          </div>
+          <button type="button" class="btn-edit-profile-chip" id="btnEditProfile">Edit</button>
+        </div>
+
+        <!-- Settings Group: Privacy & Security -->
+        <div class="settings-group">
+          <div class="group-title">Privacy & Security</div>
+          <div class="group-card">
+            <button type="button" class="settings-row" id="rowGoSecurity">
+              <div class="row-icon-box primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Security Dashboard</div>
+                <div class="row-sub">Active sessions, 2FA & protection score</div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <button type="button" class="settings-row" id="rowGoPrivacy">
+              <div class="row-icon-box accent">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Privacy Center</div>
+                <div class="row-sub">Data transparency, export & deletion</div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <button type="button" class="settings-row" id="rowGoBlockedUsers">
+              <div class="row-icon-box danger">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Blocked Users</div>
+                <div class="row-sub">Manage restricted contacts</div>
+              </div>
+              <span class="badge-count" id="blockedUsersCountBadge">0</span>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Settings Group: Notifications -->
+        <div class="settings-group">
+          <div class="group-title">Notifications</div>
+          <div class="group-card">
+            <div class="settings-row toggle-row">
+              <div class="row-icon-box warning">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Push Notifications</div>
+                <div class="row-sub">Alerts on incoming messages</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="togglePushNotifications" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+
+            <div class="settings-row toggle-row">
+              <div class="row-icon-box primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Sound & Vibrations</div>
+                <div class="row-sub">Audio tone when ping received</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="toggleSoundNotifications" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Group: Appearance -->
+        <div class="settings-group">
+          <div class="group-title">Appearance</div>
+          <div class="group-card">
+            <div class="settings-row">
+              <div class="row-icon-box accent">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Theme Mode</div>
+                <div class="row-sub">Switch visual theme</div>
+              </div>
+              <div class="theme-pill-selector">
+                <button type="button" class="btn-theme-pill active" id="btnThemeLight">Light</button>
+                <button type="button" class="btn-theme-pill" id="btnThemeDark">Dark</button>
+              </div>
+            </div>
+
+            <div class="settings-row toggle-row">
+              <div class="row-icon-box secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Desktop Phone Frame</div>
+                <div class="row-sub">Display virtual mobile bezel on wide screens</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="toggleDesktopFrame" checked>
+                <span class="slider round"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Settings Group: Help & Support -->
+        <div class="settings-group">
+          <div class="group-title">Help & Legal</div>
+          <div class="group-card">
+            <button type="button" class="settings-row" id="rowGoHelp">
+              <div class="row-icon-box success">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Help & Support</div>
+                <div class="row-sub">FAQs, Contact Support & Bug Reports</div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <button type="button" class="settings-row" id="rowGoAbout">
+              <div class="row-icon-box primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">About PingX</div>
+                <div class="row-sub">Version 1.2.0, Architecture & Licenses</div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <button type="button" class="settings-row" id="rowOpenTerms">
+              <div class="row-icon-box neutral">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Terms of Service</div>
+                <div class="row-sub">Usage guidelines & policies</div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <button type="button" class="settings-row" id="rowOpenPrivacyPolicy">
+              <div class="row-icon-box neutral">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title">Privacy Policy</div>
+                <div class="row-sub">Legal data handling principles</div>
+              </div>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Danger Zone / Sign Out -->
+        <div class="settings-group">
+          <div class="group-card">
+            <button type="button" class="settings-row text-danger" id="rowLogoutAction">
+              <div class="row-icon-box danger">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              </div>
+              <div class="row-text">
+                <div class="row-title text-danger">Log Out of PingX</div>
+                <div class="row-sub">Sign out on this device</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 10: Help & Support Center -->
+    <section class="screen" id="screenHelp">
+      <div class="subview-header">
+        <button type="button" class="btn-subview-back" data-back-to="screenSettings" title="Back to Settings">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="subview-title-wrap">
+          <h2 class="subview-title">Help & Support</h2>
+          <span class="subview-sub">Knowledge Base & Assistance</span>
+        </div>
+        <div class="subview-header-badge">
+          <span class="help-badge-icon">💡</span>
+        </div>
+      </div>
+
+      <div class="subview-scroll-area">
+        <!-- Search FAQs -->
+        <div class="search-faq-card">
+          <div class="faq-search-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="faqSearchInput" placeholder="Search questions, troubleshooting...">
+          </div>
+          <!-- Filter Tags -->
+          <div class="faq-filter-pills" id="faqFilterPills">
+            <button type="button" class="faq-pill active" data-filter="all">All</button>
+            <button type="button" class="faq-pill" data-filter="account">Account</button>
+            <button type="button" class="faq-pill" data-filter="privacy">Privacy</button>
+            <button type="button" class="faq-pill" data-filter="security">Security</button>
+            <button type="button" class="faq-pill" data-filter="messaging">Messaging</button>
+          </div>
+        </div>
+
+        <!-- FAQ Accordions List -->
+        <div class="faq-accordion-list" id="faqAccordionList">
+          <!-- Item 1 -->
+          <div class="faq-accordion-item" data-category="account">
+            <button type="button" class="faq-question-btn">
+              <span class="faq-q-text">How do I create an account and get my 8-digit PingX ID?</span>
+              <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer-pane">
+              <p>On the registration screen, enter your chosen username, email, and password. PingX automatically generates a unique, pseudonymous 8-digit ID and an instant activation OTP code. Once verified, you sign in with your 8-digit ID anytime.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="faq-accordion-item" data-category="messaging">
+            <button type="button" class="faq-question-btn">
+              <span class="faq-q-text">How do I send a connection request?</span>
+              <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer-pane">
+              <p>Tap the purple floating action button (+) on the main Chats screen. Enter the recipient's 8-digit PingX ID and a brief purpose or reason (e.g. "Project collaboration"). Senders cannot spam messages until the recipient reviews and accepts the connection request.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="faq-accordion-item" data-category="privacy">
+            <button type="button" class="faq-question-btn">
+              <span class="faq-q-text">How does PingX protect my privacy?</span>
+              <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer-pane">
+              <p>PingX uses randomized 8-digit IDs instead of requiring your phone number. We do not harvest contacts, collect GPS coordinates, or embed ad trackers. All network transport is secured by TLS 1.3 / HTTPS.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="faq-accordion-item" data-category="messaging">
+            <button type="button" class="faq-question-btn">
+              <span class="faq-q-text">How can I delete a conversation or clear history?</span>
+              <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer-pane">
+              <p>Inside any open chat, tap the three dots (⋮) in the top header and select "Clear Messages". You can also clear all stored local chat messages across all conversations from Privacy Center &gt; User Data Sovereignty &gt; Clear Chat History.</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="faq-accordion-item" data-category="security">
+            <button type="button" class="faq-question-btn">
+              <span class="faq-q-text">How do I block or unblock a user?</span>
+              <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer-pane">
+              <p>Open the chat with the user, tap the three dots (⋮) in the top header, and choose "Block User". You will be asked to confirm. Blocked users cannot send you messages or connection requests. You can view and unblock contacts anytime in Settings &gt; Blocked Users.</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="faq-accordion-item" data-category="security">
+            <button type="button" class="faq-question-btn">
+              <span class="faq-q-text">How do I report abuse, spam or inappropriate content?</span>
+              <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer-pane">
+              <p>Tap the three dots (⋮) in the chat header and choose "Report User". Select the category (Spam, Harassment, Inappropriate Content, Impersonation, or Other), provide any optional details, and submit. You can also block the user simultaneously.</p>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="faq-accordion-item" data-category="account">
+            <button type="button" class="faq-question-btn">
+              <span class="faq-q-text">What happens if I forget my password or PingX ID?</span>
+              <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer-pane">
+              <p>Your 8-digit ID is permanent for your account. If you lose your credentials, contact our support team below using your registered email address to verify account recovery.</p>
+            </div>
+          </div>
+
+          <!-- Item 8 -->
+          <div class="faq-accordion-item" data-category="privacy">
+            <button type="button" class="faq-question-btn">
+              <span class="faq-q-text">How do I download or delete my account data?</span>
+              <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer-pane">
+              <p>Go to the Privacy Center. Tap "Export Personal Data" to immediately download a full JSON archive of your profile, messages, active sessions, and requests. To permanently delete your account, choose "Delete PingX Account" and complete the verification prompt.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Support Form Card -->
+        <div class="settings-section-card contact-support-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Contact Support Team</div>
+              <div class="card-desc">Direct technical and safety assistance</div>
+            </div>
+          </div>
+
+          <form id="formContactSupport" autocomplete="off">
+            <div class="form-group">
+              <label for="supportCategory">Category</label>
+              <select id="supportCategory" class="dialog-input" required>
+                <option value="account">Account & Sign-in</option>
+                <option value="privacy">Privacy & Data Requests</option>
+                <option value="security">Security & Active Sessions</option>
+                <option value="messaging">Messaging & Video Calling</option>
+                <option value="bug">Bug Report / Crash</option>
+                <option value="other">Other Inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="supportSubject">Subject</label>
+              <input type="text" id="supportSubject" placeholder="Brief summary of your inquiry" required class="dialog-input">
+            </div>
+
+            <div class="form-group">
+              <label for="supportDescription">Detailed Description</label>
+              <textarea id="supportDescription" rows="4" maxlength="500" placeholder="Describe the issue or feedback with clear steps..." required class="dialog-input"></textarea>
+              <div class="char-counter"><span id="supportCharCount">0</span> / 500</div>
+            </div>
+
+            <div class="form-group">
+              <label for="supportAttachment">Optional Attachment (Screenshot / Log)</label>
+              <input type="file" id="supportAttachment" accept="image/*,.log,.txt" class="dialog-input-file">
+              <div class="attachment-preview-tag" id="supportAttachmentTag" style="display:none;"></div>
+            </div>
+
+            <button type="submit" class="btn-gradient-primary btn-submit-auth" id="btnSubmitSupport">
+              <span id="supportBtnText">Submit Support Request</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </form>
+
+          <!-- Submitted Tickets Tracker -->
+          <div class="tickets-tracker-area" id="ticketsTrackerArea" style="display:none;">
+            <div class="tickets-tracker-title">Your Recent Support Tickets</div>
+            <div class="tickets-list" id="ticketsListContainer"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 11: About PingX -->
+    <section class="screen" id="screenAbout">
+      <div class="subview-header">
+        <button type="button" class="btn-subview-back" data-back-to="screenSettings" title="Back to Settings">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="subview-title-wrap">
+          <h2 class="subview-title">About PingX</h2>
+          <span class="subview-sub">Platform Overview & Version</span>
+        </div>
+        <div class="subview-header-badge">
+          <img src="pingx_logo.png" alt="PingX" class="mini-logo">
+        </div>
+      </div>
+
+      <div class="subview-scroll-area">
+        <!-- App Version Card -->
+        <div class="about-version-card">
+          <img src="pingx_logo.png" alt="PingX Logo" class="about-app-logo">
+          <h3 class="about-app-name">PingX</h3>
+          <div class="about-tagline">Seamless • Secure • Direct Peer Messaging</div>
+          <div class="version-badge-pill">
+            <span class="version-dot online"></span>
+            <span>Version 1.2.0 (Production Stable)</span>
+          </div>
+          <div class="about-build-meta">Build: Web Client & Native Android Companion</div>
+        </div>
+
+        <!-- Mission & Vision -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Mission & Vision</div>
+              <div class="card-desc">Why PingX was created</div>
+            </div>
+          </div>
+          <p class="about-text-p">
+            PingX was architected to restore sovereignty and clarity to modern communication. Traditional messaging apps hoard device address books, embed advertising trackers, and monetize user attention. PingX replaces intrusive profiling with unique 8-digit pseudonymous IDs, purpose-driven connection requests, and zero third-party data tracking.
+          </p>
+        </div>
+
+        <!-- Platform Highlights -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge accent">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Key Capabilities</div>
+              <div class="card-desc">Core feature architecture</div>
+            </div>
+          </div>
+          <div class="about-features-grid">
+            <div class="about-feat-item">
+              <div class="feat-icon">🆔</div>
+              <div class="feat-title">8-Digit Peer ID</div>
+              <div class="feat-sub">Pseudonymous identity without phone number requirements.</div>
+            </div>
+            <div class="about-feat-item">
+              <div class="feat-icon">🛡️</div>
+              <div class="feat-title">OTP Gatekeeper</div>
+              <div class="feat-sub">Activation verification codes to secure ID assignment.</div>
+            </div>
+            <div class="about-feat-item">
+              <div class="feat-icon">🤝</div>
+              <div class="feat-title">Connection Requests</div>
+              <div class="feat-sub">Spam protection requiring explicit reason approval before messaging.</div>
+            </div>
+            <div class="about-feat-item">
+              <div class="feat-icon">📹</div>
+              <div class="feat-title">1-Tap Video Calling</div>
+              <div class="feat-sub">Seamless Google Meet room integration for face-to-face sync.</div>
+            </div>
+            <div class="about-feat-item">
+              <div class="feat-icon">🎙️</div>
+              <div class="feat-title">Voice Notes</div>
+              <div class="feat-sub">Real-time animated waveforms and quick audio dispatch.</div>
+            </div>
+            <div class="about-feat-item">
+              <div class="feat-icon">🔒</div>
+              <div class="feat-title">Privacy Sovereignty</div>
+              <div class="feat-sub">Complete data export and instant local cache purging.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge secondary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Technology & Engineering</div>
+              <div class="card-desc">Lightweight & performant stack</div>
+            </div>
+          </div>
+          <div class="tech-tags-list">
+            <span class="tech-tag">HTML5 Semantic DOM</span>
+            <span class="tech-tag">Vanilla CSS3 Design Tokens</span>
+            <span class="tech-tag">JavaScript ES6+</span>
+            <span class="tech-tag">Android WebView / Java</span>
+            <span class="tech-tag">Progressive Web App (PWA)</span>
+            <span class="tech-tag">Vercel Edge Network</span>
+          </div>
+        </div>
+
+        <!-- Developer & Team -->
+        <div class="settings-section-card">
+          <div class="section-card-header">
+            <div class="card-icon-badge neutral">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <div class="card-title">Development & Team</div>
+              <div class="card-desc">PingX Core Engineering</div>
+            </div>
+          </div>
+          <p class="about-text-p">
+            Crafted by the PingX Core Team with a commitment to privacy, simplicity, and fluid responsive design across desktop, tablet, and mobile platforms.
+          </p>
+        </div>
+
+        <!-- Legal & Licenses Buttons -->
+        <div class="about-legal-actions">
+          <button type="button" class="btn-ghost-sm" id="btnAboutTerms">Terms of Service</button>
+          <button type="button" class="btn-ghost-sm" id="btnAboutPrivacy">Privacy Policy</button>
+          <button type="button" class="btn-ghost-sm" id="btnAboutLicenses">Open Source Licenses</button>
+        </div>
+
+        <div class="about-copyright">
+          © 2026 PingX Messenger. All rights reserved.
+        </div>
+      </div>
+    </section>
+
+    <!-- Persistent Bottom Navigation Bar (Visible across main authenticated tabs) -->
+    <nav class="app-bottom-nav" id="appBottomNav" style="display: none;">
+      <button type="button" class="nav-tab active" data-screen="screenHome" id="tabNavHome">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Chats</span>
+      </button>
+      <button type="button" class="nav-tab" data-screen="screenSecurity" id="tabNavSecurity">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Security</span>
+      </button>
+      <button type="button" class="nav-tab" data-screen="screenPrivacy" id="tabNavPrivacy">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>Privacy</span>
+      </button>
+      <button type="button" class="nav-tab" data-screen="screenSettings" id="tabNavSettings">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>Settings</span>
+      </button>
+    </nav>
 
     <!-- Modal 1: Registration Success Alert -->
     <div class="modal-backdrop" id="modalRegSuccess">
@@ -523,17 +1535,282 @@
         <p class="modal-subtitle">Scan with your iPhone, Android, or tablet camera to open instantly:</p>
 
         <div class="qr-code-wrapper" id="qrCodeContainer">
-          <img id="qrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fapril-prefix-how-assume.trycloudflare.com&bgcolor=ffffff&color=4A00E0" alt="QR Code" class="qr-image">
+          <img id="qrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fnikkusingh21.github.io%2Fpingx%2F&bgcolor=ffffff&color=4A00E0" alt="QR Code" class="qr-image">
         </div>
 
         <div class="share-url-box">
-          <input type="text" id="shareUrlInput" readonly value="https://april-prefix-how-assume.trycloudflare.com">
+          <input type="text" id="shareUrlInput" readonly value="https://nikkusingh21.github.io/pingx/">
           <button type="button" class="btn-copy-url" id="btnCopyShareUrl">Copy Link</button>
         </div>
 
         <button type="button" class="btn-gradient-primary btn-modal-action" id="btnCloseShareModal">
           Done
         </button>
+      </div>
+    </div>
+
+    <!-- Modal 5: Universal Confirmation Dialog -->
+    <div class="modal-backdrop" id="modalConfirmAction">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-icon-header danger" id="confirmModalIconWrap">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e53935" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3 class="modal-title" id="confirmModalTitle">Are you sure?</h3>
+        <p class="modal-subtitle" id="confirmModalDescription">This action cannot be undone.</p>
+        <div class="modal-dual-actions">
+          <button type="button" class="btn-action-cancel" id="btnConfirmCancel">Cancel</button>
+          <button type="button" class="btn-danger-sm" id="btnConfirmExecute">Confirm</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 6: Report User / Inappropriate Content -->
+    <div class="modal-backdrop" id="modalReportUser">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-icon-header warning">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF9800" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3 class="modal-title">Report User</h3>
+        <p class="modal-subtitle">Submit a report to help maintain a safe community</p>
+
+        <form id="formReportUser">
+          <div class="form-group text-left">
+            <label for="reportTargetUser">Target Account</label>
+            <input type="text" id="reportTargetUser" readonly class="dialog-input">
+          </div>
+
+          <div class="form-group text-left">
+            <label for="reportReasonSelect">Reason / Violation Category</label>
+            <select id="reportReasonSelect" class="dialog-input" required>
+              <option value="spam">Unsolicited Advertising / Spam</option>
+              <option value="harassment">Harassment / Bullying</option>
+              <option value="inappropriate">Inappropriate Media / Content</option>
+              <option value="impersonation">Impersonation / Fake ID</option>
+              <option value="other">Other Safety Concern</option>
+            </select>
+          </div>
+
+          <div class="form-group text-left">
+            <label for="reportDetails">Additional Details (Optional)</label>
+            <textarea id="reportDetails" rows="3" placeholder="Provide context about the incident..." class="dialog-input"></textarea>
+          </div>
+
+          <div class="form-group text-left">
+            <label class="checkbox-label">
+              <input type="checkbox" id="reportAndBlockCheckbox" checked>
+              <span>Also block this user immediately</span>
+            </label>
+          </div>
+
+          <div class="modal-dual-actions">
+            <button type="button" class="btn-action-cancel" id="btnCancelReport">Cancel</button>
+            <button type="submit" class="btn-danger-sm" id="btnSubmitReport">Submit Report</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 7: Blocked Users Management -->
+    <div class="modal-backdrop" id="modalBlockedUsers">
+      <div class="modal-card modal-scale-in modal-card-wide">
+        <div class="modal-sheet-header">
+          <h3 class="modal-title">Blocked Users</h3>
+          <button type="button" class="btn-modal-close-x" id="btnCloseBlockedModalX">✕</button>
+        </div>
+        <p class="modal-subtitle">Contacts blocked from messaging or sending connection requests</p>
+
+        <div class="blocked-users-list" id="blockedUsersListContainer">
+          <!-- Populated dynamically or empty state -->
+        </div>
+
+        <button type="button" class="btn-gradient-primary btn-modal-action" id="btnCloseBlockedModal">
+          Done
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal 8: Change Password -->
+    <div class="modal-backdrop" id="modalChangePassword">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-icon-header primary">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A00E0" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3 class="modal-title">Update Password</h3>
+        <p class="modal-subtitle">Ensure your account stays protected</p>
+
+        <form id="formChangePassword">
+          <div class="form-group text-left">
+            <label for="currentPasswordInput">Current Password</label>
+            <input type="password" id="currentPasswordInput" placeholder="Enter current password" required class="dialog-input">
+          </div>
+          <div class="form-group text-left">
+            <label for="newPasswordInput">New Password</label>
+            <input type="password" id="newPasswordInput" placeholder="Minimum 8 characters" required class="dialog-input">
+          </div>
+          <div class="form-group text-left">
+            <label for="confirmNewPasswordInput">Confirm New Password</label>
+            <input type="password" id="confirmNewPasswordInput" placeholder="Repeat new password" required class="dialog-input">
+          </div>
+          <div class="modal-dual-actions">
+            <button type="button" class="btn-action-cancel" id="btnCancelChangePassword">Cancel</button>
+            <button type="submit" class="btn-action-accept" id="btnSubmitChangePassword">Save Password</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 9: 2FA Setup -->
+    <div class="modal-backdrop" id="modalSetup2fa">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-icon-header accent">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00D2FF" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3 class="modal-title">Setup Two-Factor Auth</h3>
+        <p class="modal-subtitle">Scan QR with Google Authenticator or Authy</p>
+
+        <div class="qr-code-wrapper">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=otpauth%3A%2F%2Ftotp%2FPingX%3A84920194%3Fsecret%3DPX2F8492K91M4X7L%26issuer%3DPingX&bgcolor=ffffff&color=4A00E0" alt="2FA QR Code" class="qr-image">
+        </div>
+
+        <div class="two-fa-secret-box">
+          <span class="secret-label">Manual Setup Key:</span>
+          <span class="secret-key monospace" id="twoFaSecretDisplay">PX2F-8492-K91M-4X7L</span>
+          <button type="button" class="btn-copy-sm" data-copy="twoFaSecretDisplay" title="Copy Key">📋</button>
+        </div>
+
+        <form id="formVerify2fa">
+          <div class="form-group text-left">
+            <label for="input2faCode">Enter 6-Digit Authenticator Code</label>
+            <input type="text" id="input2faCode" maxlength="6" inputmode="numeric" placeholder="e.g. 583920" required class="dialog-input text-center monospace font-large">
+          </div>
+          <div class="backend-integration-tag">
+            <span>⚙️ Backend Note: Production TOTP HMAC is validated server-side. Client simulation active.</span>
+          </div>
+          <div class="modal-dual-actions">
+            <button type="button" class="btn-action-cancel" id="btnCancel2fa">Cancel</button>
+            <button type="submit" class="btn-action-accept" id="btnSubmit2fa">Verify & Enable</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 10: Support Ticket Receipt -->
+    <div class="modal-backdrop" id="modalSupportTicketSuccess">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-icon-header success">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 class="modal-title">Ticket Submitted!</h3>
+        <p class="modal-subtitle">Our technical team has received your inquiry.</p>
+        <div class="ticket-ref-box">
+          <span class="ticket-ref-label">Reference ID:</span>
+          <span class="ticket-ref-id monospace" id="submittedTicketRefId">PX-8492-SUP</span>
+          <button type="button" class="btn-copy-sm" data-copy="submittedTicketRefId" title="Copy Reference ID">📋</button>
+        </div>
+        <p class="ticket-ref-note">Updates will be routed to your registered account notification log.</p>
+        <button type="button" class="btn-gradient-primary btn-modal-action" id="btnCloseSupportSuccessModal">
+          Done
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal 11: Terms of Service Sheet -->
+    <div class="modal-backdrop" id="modalTerms">
+      <div class="modal-card modal-scale-in modal-card-wide modal-scrollable">
+        <div class="modal-sheet-header">
+          <h3 class="modal-title">Terms of Service</h3>
+          <button type="button" class="btn-modal-close-x" id="btnCloseTermsModal">✕</button>
+        </div>
+        <div class="legal-content-body">
+          <p><strong>Effective Date: September 2026</strong></p>
+          <h4>1. Acceptance of Terms</h4>
+          <p>By accessing or using the PingX web application or mobile APK, you agree to be bound by these Terms of Service. PingX provides direct peer messaging and communication utilities based on unique 8-digit pseudonymous IDs.</p>
+          <h4>2. User Responsibilities & Acceptable Use</h4>
+          <p>You agree not to use PingX for illegal activities, transmitting malware, sending unsolicited bulk spam, or harassing other users. PingX provides built-in blocking and reporting tools. Violations of acceptable use may result in immediate revocation of your 8-digit PingX ID.</p>
+          <h4>3. Communication & Google Meet Integration</h4>
+          <p>PingX facilitates 1-tap video calling via Google Meet. Third-party video services operate subject to their respective terms and privacy declarations.</p>
+          <h4>4. Limitation of Liability</h4>
+          <p>PingX is provided "as is" and "as available". The service makes no warranties regarding uninterrupted uptime. We prioritize security and privacy but advise users to maintain copies of essential records.</p>
+        </div>
+        <button type="button" class="btn-gradient-primary btn-modal-action" id="btnAcceptTermsModal">
+          Understood
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal 12: Privacy Policy Legal Sheet -->
+    <div class="modal-backdrop" id="modalPrivacyPolicy">
+      <div class="modal-card modal-scale-in modal-card-wide modal-scrollable">
+        <div class="modal-sheet-header">
+          <h3 class="modal-title">Privacy Policy</h3>
+          <button type="button" class="btn-modal-close-x" id="btnClosePolicyModal">✕</button>
+        </div>
+        <div class="legal-content-body">
+          <p><strong>Effective Date: September 2026</strong></p>
+          <h4>1. Privacy Philosophy</h4>
+          <p>At PingX, user autonomy and data minimization are our foundational principles. We do not sell personal data, profile user behavior for advertisers, or access contacts on your device.</p>
+          <h4>2. Information We Process</h4>
+          <p>We only process the minimal information necessary to deliver service: your chosen username, registered email address, randomly assigned 8-digit PingX ID, and transport authentication tokens.</p>
+          <h4>3. Data Storage & Retention</h4>
+          <p>Messages and chat history are kept in client-side storage under user control. Users can export their complete data archive or purge local cache at any time using the Privacy Center.</p>
+          <h4>4. Transport Security</h4>
+          <p>All network traffic is encrypted in transit using standard Transport Layer Security (TLS 1.3 / HTTPS). Development of cryptographic client-side key exchange for end-to-end encryption is on the future backend roadmap.</p>
+        </div>
+        <button type="button" class="btn-gradient-primary btn-modal-action" id="btnAcceptPolicyModal">
+          Understood
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal 13: Edit Profile -->
+    <div class="modal-backdrop" id="modalEditProfile">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-icon-header primary">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4A00E0" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3 class="modal-title">Edit Profile</h3>
+        <p class="modal-subtitle">Update your display information</p>
+
+        <form id="formEditProfile">
+          <div class="form-group text-left">
+            <label for="editUsernameInput">Display Name</label>
+            <input type="text" id="editUsernameInput" placeholder="e.g. Alex Rivera" required class="dialog-input">
+          </div>
+          <div class="form-group text-left">
+            <label for="editEmailInput">Email Address</label>
+            <input type="email" id="editEmailInput" placeholder="name@example.com" required class="dialog-input">
+          </div>
+          <div class="form-group text-left">
+            <label for="editAvatarSelect">Avatar Icon</label>
+            <select id="editAvatarSelect" class="dialog-input">
+              <option value="👨‍💻">👨‍💻 Tech Guy</option>
+              <option value="👩‍💻">👩‍💻 Tech Girl</option>
+              <option value="🚀">🚀 Rocket</option>
+              <option value="✨">✨ Sparkle</option>
+              <option value="⚡">⚡ Lightning</option>
+              <option value="📚">📚 Scholar</option>
+              <option value="👤">👤 Neutral</option>
+            </select>
+          </div>
+          <div class="modal-dual-actions">
+            <button type="button" class="btn-action-cancel" id="btnCancelEditProfile">Cancel</button>
+            <button type="submit" class="btn-action-accept" id="btnSaveEditProfile">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 14: Contact / Peer Details -->
+    <div class="modal-backdrop" id="modalContactProfile">
+      <div class="modal-card modal-scale-in">
+        <div class="modal-avatar-header" id="contactModalAvatar">👨‍💻</div>
+        <h3 class="modal-title" id="contactModalName">Rakesh</h3>
+        <div class="modal-reason-pill" id="contactModalId">PingX ID: 91028475</div>
+        <p class="modal-subtitle" id="contactModalStatus">Status: Online</p>
+        <div class="modal-dual-actions">
+          <button type="button" class="btn-action-cancel" id="btnCloseContactProfile">Close</button>
+          <button type="button" class="btn-danger-sm" id="btnContactModalBlock">Block Contact</button>
+        </div>
       </div>
     </div>
 

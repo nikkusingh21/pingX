@@ -9,9 +9,12 @@ git add .
 echo "💾 Committing: '$COMMIT_MSG'..."
 git commit -m "$COMMIT_MSG" || echo "No new changes to commit."
 
+echo "🚀 Syncing local gh-pages branch with main..."
+git branch -f gh-pages main
+
 echo "🚀 Pushing to GitHub (nikkusingh21/pingX)..."
 git push origin main
-git push origin gh-pages
+git push origin gh-pages --force
 
 echo ""
 echo "================================================="
