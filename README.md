@@ -6,7 +6,10 @@ PingX is a modern, ultra-responsive messaging web application and Android app fe
 
 ## 🚀 Live Demo & Access
 
-- **Web App (Opens on Any Device - iOS, Android, macOS, Windows)**:  
+- **Vercel Live Host**:  
+  [https://ping-x.vercel.app](https://ping-x.vercel.app)
+
+- **GitHub Pages (Alternative)**:  
   [https://nikkusingh21.github.io/pingx/](https://nikkusingh21.github.io/pingx/)
 
 - **Direct Native Android APK Download (Permanent)**:  
